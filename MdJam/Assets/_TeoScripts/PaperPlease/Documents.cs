@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Documents : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class Documents : MonoBehaviour
     protected Action DoAction;
     [HideInInspector]
     public Vector3 target;
+
+    [SerializeField]
+    protected TextMeshProUGUI nameLabel;
+    [SerializeField]
+    protected float docName;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +41,11 @@ public class Documents : MonoBehaviour
             Vector3 rayPoint = ray.GetPoint(distance);
             transform.position = new Vector3(rayPoint.x, 1,rayPoint.z);
         }
+    }
+
+    protected void SetName(string name)
+    {
+        nameLabel.text = name;
     }
 
     protected void OnMouseDown()
@@ -86,6 +97,5 @@ public class Documents : MonoBehaviour
             OnSelected?.Invoke(false);
             Destroy(gameObject);
         }
-
     }
 }
