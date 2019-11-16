@@ -58,9 +58,9 @@ public class Documents : MonoBehaviour
         }
     }
 
-    protected void SetDoc()
+    public void SetDoc()
     {
-        nameLabel.text = name;
+        nameLabel.text = docName;
     }
 
     protected void OnMouseDown()
