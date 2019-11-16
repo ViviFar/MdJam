@@ -50,8 +50,25 @@ public class PaperPleaseManager : MonoBehaviour
             Debug.Log("Selectionner");
             docs.Add(doc.docName);
             StatManager.Instance.KeepPatient();
-        } else
+            if (doc.ShouldBeSelected)
+            {
+                StatManager.Instance.UpdatePaperPleaseScore(1);
+            }
+            else
+            {
+                StatManager.Instance.UpdatePaperPleaseScore(0);
+            }
+        }
+        else
         {
+            if (doc.ShouldBeSelected)
+            {
+                StatManager.Instance.UpdatePaperPleaseScore(0);
+            }
+            else
+            {
+                StatManager.Instance.UpdatePaperPleaseScore(1);
+            }
             Debug.Log("NonSelectionner");
         }
         if (index < 14)
@@ -70,6 +87,14 @@ public class PaperPleaseManager : MonoBehaviour
         index++;
         GameObject document = Instantiate(documentPrefab, transform);
         Documents doc = document.GetComponent<Documents>();
+        if (index == 0|| index ==3 || index == 5 || index ==6 || index == 8 || index ==11)
+        {
+            doc.ShouldBeSelected = true;
+        }
+        else
+        {
+            doc.ShouldBeSelected = false;
+        }
         document.transform.localPosition += Vector3.forward * 20;
         doc.docName = NameSave.GetName((Name)index - 1);
         //doc.docInclusion = SelectorGenerator.GenerateCritere(4);

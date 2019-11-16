@@ -36,6 +36,8 @@ public class Documents : MonoBehaviour
 
     protected float initialYPos;
 
+    public bool ShouldBeSelected { get; set; }
+
     // Start is called before the first frame update
     private void Awake()
     {
