@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     protected Button quit;
 
-    private static MainMenu instance;
+    protected static MainMenu instance;
     public static MainMenu Instance { get { return instance; } }
 
     #region singleton

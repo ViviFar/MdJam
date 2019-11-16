@@ -36,6 +36,8 @@ public class Documents : MonoBehaviour
     [SerializeField]
     protected string docExclusion;
 
+    protected float initialYPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,7 @@ public class Documents : MonoBehaviour
         cam = Camera.main;
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
+        initialYPos = transform.position.y;
     }
 
     protected void LateUpdate()
@@ -51,7 +54,7 @@ public class Documents : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Vector3 rayPoint = ray.GetPoint(distance);
-            transform.position = new Vector3(rayPoint.x, 1,rayPoint.z);
+            transform.position = new Vector3(rayPoint.x, initialYPos + 0.5f, rayPoint.z);
         }
     }
 
@@ -90,7 +93,7 @@ public class Documents : MonoBehaviour
 
     protected void DoGoToTarget()
     {
-        transform.position = Vector3.Lerp(transform.position, target, 0.1f);
+        transform.localPosition = Vector3.Lerp(transform.localPosition , target, 0.1f);
     }
     
     protected void DoActionVoid()

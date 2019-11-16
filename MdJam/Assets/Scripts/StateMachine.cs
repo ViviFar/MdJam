@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum State
 {
@@ -111,7 +112,7 @@ public class StateMachine : MonoBehaviour
     }
     protected void onLaunchingGameEnterState()
     {
-        //Launch Chapter 1;
+        SceneManager.LoadScene("Chapter1");
     }
     protected void onChapterSelectionEnterState()
     {
@@ -128,7 +129,7 @@ public class StateMachine : MonoBehaviour
     }
     protected void onPaperEnterState()
     {
-        //Launch "PaperPlease" Mini Game
+        SceneManager.LoadScene("Chapter1");
     }
     protected void onQuestionPatientEnterState()
     {
