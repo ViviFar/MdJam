@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -38,10 +39,14 @@ public class StatManager : MonoBehaviour
     #region statsMiniGamesPerso
     private int nbPatientsGardes = 0;
     public int NbPatientsGardes { get { return nbPatientsGardes; } }
+
     private int scoreQuestionAdulte =0;
     public int ScoreQuestionAdulte { get { return scoreQuestionAdulte; } }
-    private int scoreQuestionEnfant =0;
-    public int ScoreQuestionEnfant { get { return scoreQuestionEnfant; } }
+    //private int scoreQuestionEnfant =0;
+    //public int ScoreQuestionEnfant { get { return scoreQuestionEnfant; } }
+    private int paperPleaseScore = 0;
+    private bool paperPleaseSucces = false;
+    public bool PaperPleaseSuccess { get { return paperPleaseSucces; } }
     private bool patientAdulteGarde;
     private bool patientEnfantGarde;
     #endregion  
@@ -64,6 +69,7 @@ public class StatManager : MonoBehaviour
     public float ScoreQuestionMoyEnfant { get { return scoreQuestionMoyEnfant; } }
     private int nbPatientAdulteGarde = 0;
     private int nbPatientEnfantGarde = 0;
+    private float paperPleaseScoreMoy = 0;
     #endregion
 
     // Start is called before the first frame update
@@ -89,6 +95,18 @@ public class StatManager : MonoBehaviour
         res = res/((float)nbtotalPremierChapitreJoues);
         patientsGardesMoy = res;
         nbPatientsGardes = 0;
+        if (paperPleaseScore >= 10)
+        {
+            paperPleaseSucces = true;
+        }
+        else
+        {
+            paperPleaseSucces = false;
+        }
+        paperPleaseScoreMoy *= (float)(nbtotalPremierChapitreJoues - 1);
+        paperPleaseScoreMoy += paperPleaseScore;
+        paperPleaseScoreMoy /= (float)nbtotalPremierChapitreJoues;
+        paperPleaseScore = 0;
     }
 
     public void UpdateScoreQuestionAdulte(int score)
@@ -102,11 +120,11 @@ public class StatManager : MonoBehaviour
 
     public void UpdateScoreQuestionEnfant(int score)
     {
-        nbtotalTroisiemeChapitreJoues++;
-        scoreQuestionEnfant = score;
-        scoreQuestionMoyEnfant *= (nbtotalTroisiemeChapitreJoues - 1);
-        scoreQuestionMoyEnfant += score;
-        scoreQuestionMoyEnfant /= (float)nbtotalTroisiemeChapitreJoues;
+    //    nbtotalTroisiemeChapitreJoues++;
+    //    scoreQuestionEnfant = score;
+    //    scoreQuestionMoyEnfant *= (nbtotalTroisiemeChapitreJoues - 1);
+    //    scoreQuestionMoyEnfant += score;
+    //    scoreQuestionMoyEnfant /= (float)nbtotalTroisiemeChapitreJoues;
     }
 
     public void SaveChild()
@@ -114,6 +132,12 @@ public class StatManager : MonoBehaviour
         nbtotalQuatriemeChapitreJoues++;
         patientEnfantGarde = true;
         nbPatientEnfantGarde++;
+    }
+
+    internal void KillChild()
+    {
+        nbtotalQuatriemeChapitreJoues++;
+        patientEnfantGarde = false;
     }
 
     public void ResetStats()
@@ -129,4 +153,8 @@ public class StatManager : MonoBehaviour
         nbPatientEnfantGarde = 0;
     }
 
+    public void UpdatePaperPleaseScore(int points)
+    {
+        paperPleaseScore += points;
+    }
 }

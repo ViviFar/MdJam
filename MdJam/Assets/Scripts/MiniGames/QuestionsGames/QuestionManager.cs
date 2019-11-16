@@ -94,17 +94,18 @@ public class QuestionManager : MonoBehaviour
         questionsList[currentQuestion - 1].gameObject.SetActive(false);
         if (currentQuestion == questionsList.Length)
         {
-            switch (StateMachine.Instance.CurrentState)
-            {
-                case State.QuestionPatient:
-                    StatManager.Instance.UpdateScoreQuestionAdulte(score);
-                    break;
-                case State.QuestionMerePatient:
-                    StatManager.Instance.UpdateScoreQuestionEnfant(score);
-                    break;
-                default:
-                    break;
-            }
+            //switch (StateMachine.Instance.CurrentState)
+            //{
+            //    case State.QuestionPatient:
+            //        StatManager.Instance.UpdateScoreQuestionAdulte(score);
+            //        break;
+            //    case State.QuestionMerePatient:
+            //        StatManager.Instance.UpdateScoreQuestionEnfant(score);
+            //        break;
+            //    default:
+            //        break;
+            //}
+            StatManager.Instance.UpdateScoreQuestionAdulte(score);
             QuestionFinish?.Invoke();
             return;
         }

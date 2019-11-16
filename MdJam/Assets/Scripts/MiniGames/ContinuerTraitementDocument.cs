@@ -33,5 +33,10 @@ public class ContinuerTraitementDocument : MonoBehaviour
             StatManager.Instance.SaveChild();
             StateMachine.Instance.SetNewState(State.BilanFinJeu);
         }
+        if (stopTraitement.isOn)
+        {
+            StatManager.Instance.KillChild();
+            StateMachine.Instance.SetNewState(State.BilanFinJeu);
+        }
     }
 }

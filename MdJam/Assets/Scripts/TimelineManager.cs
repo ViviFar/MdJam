@@ -32,7 +32,7 @@ public class TimelineManager : MonoBehaviour
 
     public void OnChapter2End()
     {
-        StateMachine.Instance.SetNewState(State.QuestionMerePatient);
+        StateMachine.Instance.SetNewState(State.ContinuationTraitement);
     }
 
     public void OnChapter3End()
