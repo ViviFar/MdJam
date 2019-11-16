@@ -27,7 +27,7 @@ public class QuestionManager : MonoBehaviour
     #endregion
 
     [SerializeField]
-    protected Question[] questionsPourPatient;
+    protected Question[] questionsList;
 
     [SerializeField]
     protected State nextState;
@@ -49,7 +49,7 @@ public class QuestionManager : MonoBehaviour
         //questionsPourMereDePatient = ReadCSV.Instance.QuestionsMerePatient;
         
         Debug.Log("entering start function");
-        foreach (Question qt in questionsPourPatient)
+        foreach (Question qt in questionsList)
         {
             qt.gameObject.SetActive(false);
         }
@@ -61,12 +61,12 @@ public class QuestionManager : MonoBehaviour
     public void StartQuestions()
     {
         currentQuestion = 0;
-            if (questionsPourPatient.Length == 0)
-            {
-                Debug.LogError("pas de questions pour le patient");
-                return;
-            }
-            questionsPourPatient[0].gameObject.SetActive(true);
+        if (questionsList.Length == 0)
+        {
+            Debug.LogError("pas de questions pour le patient");
+            return;
+        }
+        questionsList[0].gameObject.SetActive(true);
     }
 
 
@@ -86,12 +86,23 @@ public class QuestionManager : MonoBehaviour
         }
 
         currentQuestion++;
-        questionsPourPatient[currentQuestion - 1].gameObject.SetActive(false);
-        if (currentQuestion == questionsPourPatient.Length)
+        questionsList[currentQuestion - 1].gameObject.SetActive(false);
+        if (currentQuestion == questionsList.Length)
         {
+            switch (StateMachine.Instance.CurrentState)
+            {
+                case State.QuestionPatient:
+                    StatManager.Instance.UpdateScoreQuestionAdulte(score);
+                    break;
+                case State.QuestionMerePatient:
+                    StatManager.Instance.UpdateScoreQuestionEnfant(score);
+                    break;
+                default:
+                    break;
+            }
             StateMachine.Instance.SetNewState(nextState);
             return;
         }
-        questionsPourPatient[currentQuestion].gameObject.SetActive(true);
+        questionsList[currentQuestion].gameObject.SetActive(true);
     }
 }

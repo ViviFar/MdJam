@@ -49,6 +49,7 @@ public class PaperPleaseManager : MonoBehaviour
         {
             Debug.Log("Selectionner");
             docs.Add(doc.docName);
+            StatManager.Instance.KeepPatient();
         } else
         {
             Debug.Log("NonSelectionner");
@@ -58,6 +59,7 @@ public class PaperPleaseManager : MonoBehaviour
             SpawnPrefab();
         } else
         {
+            StatManager.Instance.UpdatePatientMoy();
             MiniGameEnd?.Invoke(this);
         }
     }

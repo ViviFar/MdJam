@@ -169,6 +169,7 @@ public class StateMachine : MonoBehaviour
 
     private void GameLaunched(Scene arg0, LoadSceneMode arg1)
     {
+        StatManager.Instance.NewGameLaunched();
         SetNewState(State.Paper);
         SceneManager.sceneLoaded -= GameLaunched;
     }

@@ -70,6 +70,14 @@ public class MainMenu : MonoBehaviour
         firstScreen.SetActive(false);
         chapterList.SetActive(false);
         analytics.SetActive(true);
+        if (StatManager.Instance.NbTotalPremierChapîtreJouees == 0)
+        {
+            Debug.Log("pas de parties jouees");
+        }
+        else
+        {
+            Debug.Log("results : \n\tnb de parties jouees : " + StatManager.Instance.NbTotalPremierChapîtreJouees + "`\n\tnb moyen de patients selectionnes : " + StatManager.Instance.PatientsGardesMoy + "\n\tscore moyen aux questions de l'adulte : " + StatManager.Instance.ScoreQuestionMoyAdulte + "\n\tscore moyen aux questions de l'enfant : " + StatManager.Instance.ScoreQuestionMoyEnfant);
+        }
         StateMachine.Instance.SetNewState(State.HistoireStats);
     }
 
