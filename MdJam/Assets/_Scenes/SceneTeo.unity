@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 246583709}
   m_Layer: 0
   m_Name: No
-  m_TagString: Untagged
+  m_TagString: Negative
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -416,6 +416,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   documentPrefab: {fileID: 1284843563739328767, guid: 369fa4cb5ae30bc4d9e2836cff5a7ae5,
     type: 3}
+  docMax: 15
+  docs: []
 --- !u!4 &1134926650
 Transform:
   m_ObjectHideFlags: 0
@@ -535,7 +537,7 @@ GameObject:
   - component: {fileID: 1750981332}
   m_Layer: 0
   m_Name: Yes
-  m_TagString: Untagged
+  m_TagString: Validation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

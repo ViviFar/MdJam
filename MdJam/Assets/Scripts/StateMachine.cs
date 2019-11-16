@@ -107,34 +107,37 @@ public class StateMachine : MonoBehaviour
     #region enterStateFunction
     protected void onMenuEnterState()
     {
-        SetNewState(State.QuestionPatient);
+        //SetNewState(State.QuestionPatient);
     }
     protected void onLaunchingGameEnterState()
     {
-
+        //Launch Chapter 1;
     }
     protected void onChapterSelectionEnterState()
     {
-
+        //Launch Chapter Selection Menu
     }
     protected void onHistoireStatEnterState()
     {
-
+        //Launch Stat Menu
     }
     protected void onExitGameEnterState()
     {
+        //Exit Game
         Application.Quit();
     }
     protected void onPaperEnterState()
     {
-
+        //Launch "PaperPlease" Mini Game
     }
     protected void onQuestionPatientEnterState()
     {
+        //Launch "Question Patient Mini Game" Mini Game
         QuestionManager.Instance.StartQuestions();
     }
     protected void onQuestionMereEnterState()
     {
+        //Launch "Question Mother Mini Game" Mini Game
         QuestionManager.Instance.StartQuestions();
     }
     protected void onContinuationTraitementEnterState()
@@ -143,9 +146,7 @@ public class StateMachine : MonoBehaviour
     }
     protected void onBilanFinJeuEnterState()
     {
-
+        //Launch End Game
     }
-
-
     #endregion
 }
