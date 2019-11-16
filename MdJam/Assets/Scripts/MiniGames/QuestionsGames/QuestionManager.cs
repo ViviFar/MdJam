@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class QuestionManager : MonoBehaviour
 {
+    public delegate void QuestionManagerEventHandler();
+    public static event QuestionManagerEventHandler QuestionFinish;
+
     #region singleton
     private static QuestionManager instance;
     public static QuestionManager Instance
@@ -53,6 +56,10 @@ public class QuestionManager : MonoBehaviour
         {
             qt.gameObject.SetActive(false);
         }
+    }
+
+    public void Begin()
+    {
         StartQuestions();
     }
 
@@ -100,7 +107,7 @@ public class QuestionManager : MonoBehaviour
                 default:
                     break;
             }
-            StateMachine.Instance.SetNewState(nextState);
+            QuestionFinish?.Invoke();
             return;
         }
         questionsList[currentQuestion].gameObject.SetActive(true);
