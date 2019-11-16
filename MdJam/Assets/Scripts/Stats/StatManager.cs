@@ -109,6 +109,13 @@ public class StatManager : MonoBehaviour
         scoreQuestionMoyEnfant /= (float)nbtotalTroisiemeChapitreJoues;
     }
 
+    public void SaveChild()
+    {
+        nbtotalQuatriemeChapitreJoues++;
+        patientEnfantGarde = true;
+        nbPatientEnfantGarde++;
+    }
+
     public void ResetStats()
     {
         nbtotalPremierChapitreJoues = 0;

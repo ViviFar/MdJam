@@ -162,7 +162,7 @@ public class StateMachine : MonoBehaviour
     }
     protected void onBilanFinJeuEnterState()
     {
-        //Launch End Game
+        //TODO : Launch End Game cinematique puis afficher les stats
     }
     #endregion
 
