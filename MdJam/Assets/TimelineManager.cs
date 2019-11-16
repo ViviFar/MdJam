@@ -19,6 +19,11 @@ public class TimelineManager : MonoBehaviour
         director.Play();
     }
 
+    public void OnChapter1End()
+    {
+        StateMachine.Instance.SetNewState(State.QuestionPatient);
+    }
+
     public void StartMiniGameChapter1()
     {
         director.Pause();

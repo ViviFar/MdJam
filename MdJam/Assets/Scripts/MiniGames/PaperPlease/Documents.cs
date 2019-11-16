@@ -39,6 +39,10 @@ public class Documents : MonoBehaviour
     protected float initialYPos;
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        DoAction = DoActionVoid;
+    }
     void Start()
     {
         Debug.Log("coucou");

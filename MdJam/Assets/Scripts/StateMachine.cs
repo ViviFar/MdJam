@@ -138,6 +138,7 @@ public class StateMachine : MonoBehaviour
     protected void onQuestionPatientEnterState()
     {
         //Launch "Question Patient Mini Game" Mini Game
+        Debug.Log("QuestionPatient");
         UnityEngine.SceneManagement.SceneManager.LoadScene("Chapter2");
         UnityEngine.SceneManagement.SceneManager.sceneLoaded += onQuestionSceneLoaded;
     }
