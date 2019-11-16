@@ -31,9 +31,25 @@ public class Question : MonoBehaviour
         {
             timer -= Time.deltaTime;
         }
-        else
+        else if(timer !=0)
         {
             timer = 0;
+            int answer = Random.Range(0, 3);
+            switch (answer)
+            {
+                case 0:
+                    answer1.onClick.Invoke();
+                    Debug.Log("answer 1 choisie");
+                    break;
+                case 1:
+                    answer2.onClick.Invoke();
+                    Debug.Log("answer 2 choisie");
+                    break;
+                case 2:
+                    answer3.onClick.Invoke();
+                    Debug.Log("answer 3 choisie");
+                    break;
+            }
         }
         remainingTime.value = timer;
     }

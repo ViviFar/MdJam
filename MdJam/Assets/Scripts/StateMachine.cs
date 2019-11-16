@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum State
 {
@@ -41,7 +43,7 @@ public class StateMachine : MonoBehaviour
 
     #region fields
     [SerializeField]
-    protected State currentState = State.BilanFinJeu;
+    protected State currentState = State.Menu;
     public State CurrentState
     {
         get { return currentState; }
@@ -52,7 +54,7 @@ public class StateMachine : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-        SetNewState(State.Menu);
+        onMenuEnterState();
     }
 
 
@@ -107,19 +109,23 @@ public class StateMachine : MonoBehaviour
     #region enterStateFunction
     protected void onMenuEnterState()
     {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
         //SetNewState(State.QuestionPatient);
     }
     protected void onLaunchingGameEnterState()
     {
         //Launch Chapter 1;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Chapter1");
     }
     protected void onChapterSelectionEnterState()
     {
         //Launch Chapter Selection Menu
+        //Update : gere en interne dans le script MainMenu
     }
     protected void onHistoireStatEnterState()
     {
         //Launch Stat Menu
+        //Update : gere en interne dans le script MainMenu
     }
     protected void onExitGameEnterState()
     {
@@ -129,24 +135,38 @@ public class StateMachine : MonoBehaviour
     protected void onPaperEnterState()
     {
         //Launch "PaperPlease" Mini Game
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Chapter1");
     }
     protected void onQuestionPatientEnterState()
     {
         //Launch "Question Patient Mini Game" Mini Game
-        QuestionManager.Instance.StartQuestions();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Chapter2");
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += onQuestionSceneLoaded;
     }
+
+
+
     protected void onQuestionMereEnterState()
     {
         //Launch "Question Mother Mini Game" Mini Game
-        QuestionManager.Instance.StartQuestions();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Chapter3");
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += onQuestionSceneLoaded;
     }
     protected void onContinuationTraitementEnterState()
     {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Chapter4");
 
     }
     protected void onBilanFinJeuEnterState()
     {
         //Launch End Game
+    }
+    #endregion
+
+    #region sceneLoadedCallbacks
+    private void onQuestionSceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded -= onQuestionSceneLoaded;
     }
     #endregion
 }
