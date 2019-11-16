@@ -92,7 +92,7 @@ public class MainMenu : MonoBehaviour
     {
         //UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
         Debug.Log("launching game at chapter 1");
-        StateMachine.Instance.SetNewState(State.Paper);
+        StateMachine.Instance.SetNewState(State.LaunchingGame);
     }
     private void goToChapter2()
     {

@@ -115,7 +115,10 @@ public class StateMachine : MonoBehaviour
     protected void onLaunchingGameEnterState()
     {
         SceneManager.LoadScene("Chapter1");
+        SceneManager.sceneLoaded += GameLaunched;
     }
+
+
     protected void onChapterSelectionEnterState()
     {
         //Launch Chapter Selection Menu
@@ -133,7 +136,7 @@ public class StateMachine : MonoBehaviour
     }
     protected void onPaperEnterState()
     {
-        SceneManager.LoadScene("Chapter1");
+
     }
     protected void onQuestionPatientEnterState()
     {
@@ -163,6 +166,13 @@ public class StateMachine : MonoBehaviour
     #endregion
 
     #region sceneLoadedCallbacks
+
+    private void GameLaunched(Scene arg0, LoadSceneMode arg1)
+    {
+        SetNewState(State.Paper);
+        SceneManager.sceneLoaded -= GameLaunched;
+    }
+
     private void onQuestionSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
         UnityEngine.SceneManagement.SceneManager.sceneLoaded -= onQuestionSceneLoaded;
