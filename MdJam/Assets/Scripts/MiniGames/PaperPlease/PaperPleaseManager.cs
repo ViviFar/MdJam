@@ -68,6 +68,8 @@ public class PaperPleaseManager : MonoBehaviour
         GameObject document = Instantiate(documentPrefab, transform);
         Documents doc = document.GetComponent<Documents>();
         document.transform.localPosition += Vector3.forward * 20;
+        doc.docName = NameSave.GetName((Name)index - 1);
+        doc.SetDoc();
         doc.target = Vector3.zero;
         doc.SetGotoTarget();
     }
