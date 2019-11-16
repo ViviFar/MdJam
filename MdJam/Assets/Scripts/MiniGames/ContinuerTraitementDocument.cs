@@ -23,7 +23,7 @@ public class ContinuerTraitementDocument : MonoBehaviour
 
     private void validation()
     {
-        if(!continueTraitement.isOn || !stopTraitement.isOn)
+        if(!continueTraitement.isOn && !stopTraitement.isOn)
         {
             //TODO : lancer ligne de dialogue pour dire d'en selectionner un
             return;

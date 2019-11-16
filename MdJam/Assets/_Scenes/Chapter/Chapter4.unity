@@ -850,3 +850,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 310211c37f1bec0429de65e9912805af, type: 3}
+--- !u!1 &8596091877527281418 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7394869276331493379, guid: 310211c37f1bec0429de65e9912805af,
+    type: 3}
+  m_PrefabInstance: {fileID: 8596091877527281417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8596091877527281419 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6462817288539727482, guid: 310211c37f1bec0429de65e9912805af,
+    type: 3}
+  m_PrefabInstance: {fileID: 8596091877527281417}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8596091877527281420 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6215791296373665387, guid: 310211c37f1bec0429de65e9912805af,
+    type: 3}
+  m_PrefabInstance: {fileID: 8596091877527281417}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2109663825, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8596091877527281421 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7813198732091539497, guid: 310211c37f1bec0429de65e9912805af,
+    type: 3}
+  m_PrefabInstance: {fileID: 8596091877527281417}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2109663825, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8596091877527281422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8596091877527281418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a126cf55e42e8f4f932d9467f627599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  continueTraitement: {fileID: 8596091877527281421}
+  stopTraitement: {fileID: 8596091877527281420}
+  validate: {fileID: 8596091877527281419}
