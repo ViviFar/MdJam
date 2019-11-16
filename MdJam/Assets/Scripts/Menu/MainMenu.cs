@@ -54,10 +54,13 @@ public class MainMenu : MonoBehaviour
         chapitre2.onClick.AddListener(goToChapter2);
         chapitre3.onClick.AddListener(goToChapter3);
         chapitre4.onClick.AddListener(goToChapter4);
+        cleanData.onClick.AddListener(clearData);
         chapterReturn.onClick.AddListener(backToMenu);
         analitycsReturn.onClick.AddListener(backToMenu);
         backToMenu();
     }
+
+
 
     #region fonctionDesBoutons
     private void Quit()
@@ -119,6 +122,11 @@ public class MainMenu : MonoBehaviour
         StateMachine.Instance.SetNewState(State.ContinuationTraitement);
     }
 
+    private void clearData()
+    {
+        StatManager.Instance.ResetStats();
+    }
+
     private void backToMenu()
     {
         firstScreen.SetActive(true);
@@ -139,6 +147,7 @@ public class MainMenu : MonoBehaviour
         chapitre3.onClick.RemoveListener(goToChapter3);
         chapitre4.onClick.RemoveListener(goToChapter4);
         chapterReturn.onClick.RemoveListener(backToMenu);
+        cleanData.onClick.RemoveListener(clearData);
         analitycsReturn.onClick.RemoveListener(backToMenu);
         if (this == instance) instance = null;
     }

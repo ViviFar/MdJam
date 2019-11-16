@@ -39,6 +39,8 @@ public class StateMachine : MonoBehaviour
             return instance;
         }
     }
+
+
     #endregion
 
     #region fields

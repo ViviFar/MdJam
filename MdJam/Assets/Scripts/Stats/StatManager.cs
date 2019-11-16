@@ -23,6 +23,15 @@ public class StatManager : MonoBehaviour
             return instance;
         }
     }
+    private void Awake()
+    {
+        if (instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+    }
     #endregion
 
     //stats de la partie du joueur
@@ -79,6 +88,7 @@ public class StatManager : MonoBehaviour
         res += nbPatientsGardes;
         res = res/((float)nbtotalPremierChapitreJoues);
         patientsGardesMoy = res;
+        nbPatientsGardes = 0;
     }
 
     public void UpdateScoreQuestionAdulte(int score)
@@ -97,6 +107,19 @@ public class StatManager : MonoBehaviour
         scoreQuestionMoyEnfant *= (nbtotalTroisiemeChapitreJoues - 1);
         scoreQuestionMoyEnfant += score;
         scoreQuestionMoyEnfant /= (float)nbtotalTroisiemeChapitreJoues;
+    }
+
+    public void ResetStats()
+    {
+        nbtotalPremierChapitreJoues = 0;
+        nbtotalSecondChapitreJoues = 0;
+        nbtotalTroisiemeChapitreJoues = 0;
+        nbtotalQuatriemeChapitreJoues = 0;
+        patientsGardesMoy = 0;
+        scoreQuestionMoyAdulte = 0;
+        scoreQuestionMoyEnfant = 0;
+        nbPatientAdulteGarde = 0;
+        nbPatientEnfantGarde = 0;
     }
 
 }
