@@ -6,7 +6,7 @@ using TMPro;
 
 public class Documents : MonoBehaviour
 {
-    public delegate void DocumentSelectorHandler(bool isSelected);
+    public delegate void DocumentSelectorHandler(bool isSelected, Documents doc);
     public static event DocumentSelectorHandler OnSelected;
 
     protected Camera cam;
@@ -22,7 +22,19 @@ public class Documents : MonoBehaviour
     [SerializeField]
     protected TextMeshProUGUI nameLabel;
     [SerializeField]
-    protected float docName;
+    protected TextMeshProUGUI descriptionLabel;
+    [SerializeField]
+    protected TextMeshProUGUI inclusionLabel;
+    [SerializeField]
+    protected TextMeshProUGUI exclusionLabel;
+
+    public string docName;
+    [SerializeField]
+    protected string docDescription;
+    [SerializeField]
+    protected string docInclusion;
+    [SerializeField]
+    protected string docExclusion;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +55,7 @@ public class Documents : MonoBehaviour
         }
     }
 
-    protected void SetName(string name)
+    protected void SetDoc()
     {
         nameLabel.text = name;
     }
@@ -90,11 +102,11 @@ public class Documents : MonoBehaviour
     {
         if (other.CompareTag("Validation"))
         {
-            OnSelected?.Invoke(true);
+            OnSelected?.Invoke(true,this);
             Destroy(gameObject);
         } else if (other.CompareTag("Negative"))
         {
-            OnSelected?.Invoke(false);
+            OnSelected?.Invoke(false, this);
             Destroy(gameObject);
         }
     }

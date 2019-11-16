@@ -10,7 +10,9 @@ public class PaperPleaseManager : MonoBehaviour
     protected GameObject documentPrefab;
     protected int index;
     [SerializeField]
-    protected int docMax; 
+    protected int docMax;
+    [SerializeField]
+    protected List<string> docs = new List<string>();
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +20,12 @@ public class PaperPleaseManager : MonoBehaviour
         SpawnPrefab();
     }
 
-    private void Documents_OnSelected(bool isSelected)
+    private void Documents_OnSelected(bool isSelected, Documents doc)
     {
         if (isSelected)
         {
             Debug.Log("Selectionner");
+            docs.Add(doc.docName);
         } else
         {
             Debug.Log("NonSelectionner");
@@ -42,11 +45,6 @@ public class PaperPleaseManager : MonoBehaviour
         doc.target = Vector3.zero;
         doc.SetGotoTarget();
     }
-
-    protected void GoToPoint(Transform objectTransform, Vector3 finalPos)
-    {
-
-    } 
 
     // Update is called once per frame
     void Update()
