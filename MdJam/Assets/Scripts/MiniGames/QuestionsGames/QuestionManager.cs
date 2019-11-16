@@ -82,13 +82,11 @@ public class QuestionManager : MonoBehaviour
     {
         switch (state)
         {
-            case AnswerState.BadAnswer:
-                score--;
-                break;
             case AnswerState.GoodAnswer:
                 score++;
                 break;
             default:
+                //TODO : lancer une ligne de dialogue pour corriger et donner la bonne reponse
                 break;
         }
 
