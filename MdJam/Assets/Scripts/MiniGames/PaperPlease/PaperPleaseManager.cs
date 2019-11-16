@@ -59,6 +59,7 @@ public class PaperPleaseManager : MonoBehaviour
             SpawnPrefab();
         } else
         {
+            index = 0;
             StatManager.Instance.UpdatePatientMoy();
             MiniGameEnd?.Invoke(this);
         }
@@ -77,9 +78,8 @@ public class PaperPleaseManager : MonoBehaviour
         doc.SetGotoTarget();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-
+        Documents.OnSelected -= Documents_OnSelected;
     }
 }

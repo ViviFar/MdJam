@@ -29,5 +29,9 @@ public class TimelineManager : MonoBehaviour
         director.Pause();
         PaperPleaseManager.Instance.BeginGame();
     }
+    private void OnDestroy()
+    {
+        PaperPleaseManager.MiniGameEnd -= PaperPleaseManager_MiniGameEnd;
+    }
 
 }
