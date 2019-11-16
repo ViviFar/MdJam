@@ -28,7 +28,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     protected GameObject chapterList, analytics;
 
-    private static MainMenu instance;
+    protected static MainMenu instance;
     public static MainMenu Instance { get { return instance; } }
 
     #region singleton

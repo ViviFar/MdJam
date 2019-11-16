@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class PaperPleaseManager : MonoBehaviour
 {
-
+    public delegate void PaperPleaseEventHandler(PaperPleaseManager sender);
+    static public event PaperPleaseEventHandler MiniGameEnd;
     [SerializeField]
     protected GameObject documentPrefab;
     protected int index;
@@ -13,11 +14,33 @@ public class PaperPleaseManager : MonoBehaviour
     protected int docMax;
     [SerializeField]
     protected List<string> docs = new List<string>();
-    // Start is called before the first frame update
+    protected static PaperPleaseManager instance;
+    public static PaperPleaseManager Instance { get { return instance; } }
+    #region singleton
+    private void Awake()
+    {
+        if (instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+    }
+    #endregion
+
+
     void Start()
     {
         Documents.OnSelected += Documents_OnSelected;
+        
+
+    }
+
+    public void BeginGame()
+    {
         SpawnPrefab();
+
     }
 
     private void Documents_OnSelected(bool isSelected, Documents doc)
@@ -33,15 +56,18 @@ public class PaperPleaseManager : MonoBehaviour
         if (index < 14)
         {
             SpawnPrefab();
+        } else
+        {
+            MiniGameEnd?.Invoke(this);
         }
     }
 
     protected void SpawnPrefab()
     {
         index++;
-        GameObject document = Instantiate(documentPrefab);
+        GameObject document = Instantiate(documentPrefab, transform);
         Documents doc = document.GetComponent<Documents>();
-        document.transform.position += Vector3.forward * 20;
+        document.transform.localPosition += Vector3.forward * 20;
         doc.target = Vector3.zero;
         doc.SetGotoTarget();
     }

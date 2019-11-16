@@ -114,8 +114,7 @@ public class StateMachine : MonoBehaviour
     }
     protected void onLaunchingGameEnterState()
     {
-        //Launch Chapter 1;
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Chapter1");
+        SceneManager.LoadScene("Chapter1");
     }
     protected void onChapterSelectionEnterState()
     {
@@ -134,8 +133,7 @@ public class StateMachine : MonoBehaviour
     }
     protected void onPaperEnterState()
     {
-        //Launch "PaperPlease" Mini Game
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Chapter1");
+        SceneManager.LoadScene("Chapter1");
     }
     protected void onQuestionPatientEnterState()
     {
