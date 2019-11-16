@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class PaperPleaseManager : MonoBehaviour
 {
-
+    public delegate void PaperPleaseEventHandler(PaperPleaseManager sender);
+    static public event PaperPleaseEventHandler MiniGameEnd;
     [SerializeField]
     protected GameObject documentPrefab;
     protected int index;
@@ -32,6 +33,8 @@ public class PaperPleaseManager : MonoBehaviour
     void Start()
     {
         Documents.OnSelected += Documents_OnSelected;
+        
+
     }
 
     public void BeginGame()
@@ -53,6 +56,9 @@ public class PaperPleaseManager : MonoBehaviour
         if (index < 14)
         {
             SpawnPrefab();
+        } else
+        {
+            MiniGameEnd?.Invoke(this);
         }
     }
 
