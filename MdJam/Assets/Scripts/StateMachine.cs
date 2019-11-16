@@ -112,7 +112,6 @@ public class StateMachine : MonoBehaviour
     protected void onMenuEnterState()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
-        //SetNewState(State.QuestionPatient);
     }
     protected void onLaunchingGameEnterState()
     {
