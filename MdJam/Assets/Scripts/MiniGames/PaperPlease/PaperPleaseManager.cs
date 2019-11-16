@@ -71,6 +71,7 @@ public class PaperPleaseManager : MonoBehaviour
         Documents doc = document.GetComponent<Documents>();
         document.transform.localPosition += Vector3.forward * 20;
         doc.docName = NameSave.GetName((Name)index - 1);
+        //doc.docInclusion = SelectorGenerator.GenerateCritere(4);
         doc.SetDoc();
         doc.target = Vector3.zero;
         doc.SetGotoTarget();
