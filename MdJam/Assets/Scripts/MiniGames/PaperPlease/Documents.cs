@@ -29,10 +29,8 @@ public class Documents : MonoBehaviour
     protected TextMeshProUGUI exclusionLabel;
 
     public string docName;
-    [SerializeField]
-    protected string docDescription;
-    [SerializeField]
-    protected string docInclusion;
+    public string docDescription;
+    public string docInclusion;
     [SerializeField]
     protected string docExclusion;
 
@@ -58,13 +56,15 @@ public class Documents : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Vector3 rayPoint = ray.GetPoint(distance);
-            transform.position = new Vector3(rayPoint.x, initialYPos + 0.5f, rayPoint.z);
+            transform.position = new Vector3(rayPoint.x, initialYPos + 1, rayPoint.z);
         }
     }
 
     public void SetDoc()
     {
         nameLabel.text = docName;
+        descriptionLabel.text = docDescription;
+        inclusionLabel.text = docInclusion;
     }
 
     protected void OnMouseDown()
