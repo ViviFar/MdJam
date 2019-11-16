@@ -60,7 +60,6 @@ public class QuestionManager : MonoBehaviour
 
     public void StartQuestions()
     {
-        Debug.Log("enter startQuestionFunction");
         currentQuestion = 0;
             if (questionsPourPatient.Length == 0)
             {
