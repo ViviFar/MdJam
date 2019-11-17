@@ -12,7 +12,7 @@ EXTERNAL CritereDisappear()
 EXTERNAL SetTransition(transition)
 VAR center = 514
 VAR topLeft = 257
-
+VAR fail =0
 -> Prologue
 
 ===Info===
@@ -28,24 +28,24 @@ c: ... {SetFontSize(40)}{TextAlignment(topLeft)}
 c: Bon !
 c: Il faut que je retrouve ces fiches de patients.
 c: Sans ca, pas d'etude et donc {NextScene(2)}
-c: JE PERDS MON STATUT DE CHERCHEUR !!  {NextScene(3)} {SetFontSize(75)}{TextAlignment(center)}
+c: JE PERDS MON STATUT DE CHERCHEUR !!  {NextScene(3)} {SetFontSize(70)}{TextAlignment(center)}
 c: Il ne faut surtout pas que ca arrive. {NextScene(2)} {SetFontSize(40)}{TextAlignment(topLeft)}
 s: Bonjour monsieur. {NextScene(4)} {EnterSoignant()}
 c: Que ce passe-t-il ?
-s: J'ai retrouver vos fiches de patients. Je vais garder les fiches avec moi pour le moment, ils se pourraient que j'en rajoute d'autre.
+s: J'ai retrouver vos fiches de patients. Je vous les mets ici, il se pourraient que d'autre arrive dans la journee donc attendez un peu avant commencer a trier.
 c: (Me voila rassurer) Merci pour les fiches.
 s: De rien. D'ailleurs voici aussi les criteres d'inclusion et d'exclusion pour la recherche.
 s: {CritereAppear()}
 s: {CritereDisappear()}
 c: Merci bien pour ca, je vais tous reverifier.
 s: Tres bien, dans ce cas je vais vous laissez, je reviendrais plus tard, j'ai un rendez vous de prevu maintenant.
-c: D'accord, a plus tard. {LeaveSoignant()}
+c: D'accord, a plus tard.
 c: {SetTransition(0)}
 -> Chapter1
 
 ===Chapter1===
 s:{SetTransition(1)}{NextScene(6)}
-s:Bonjour, vous pouvez vous assoir.
+s: Bonjour, vous pouvez vous assoir.
 s: Alors ? A ce que je vois le traitement standart n'as pas l'air de fonctionner.
 m: Malheureusement non...
 s: Ne vous inquietez pas Madame. Il s'avere que votre fille est tres probablement eligible a un traitement alternatif.
@@ -56,18 +56,17 @@ s: Certaine question vont sans doute vous semblez stupide au vu de l'age de votr
 ->DONE
 
 ===Chapter2===
-
+c:{SetTransition(1)}{NextScene(9)}
+c: Bon, il est temps de trier.
+c: {NextScene(10)}
 ->DONE
 
 ===Question1===
-s: Hormis le traitement initial est ce que votre fille a eu des medicaments ?
-+   [Oui] -> Question1Answer1
-+   [Non] -> Question1Answer2
+s: Comment ce passe le traitement actuelle ?
++   Plutot bien -> Question1Answer1
++   Non -> Question1Answer2
 +   [...] -> Question1Answer3
-
-===QuestionReponse===
-
-->DONE
+*->DONE
 
 ===Question1Answer1===
 m: Oui bien evidemment.
@@ -81,7 +80,7 @@ s: Interressant
 
 
 ===Question1Answer3===
-m: ...
+m: ... [{~fail = fail + 1}]
 s: Le silence n'est pas une reponse mais soit.
 ->Question2
 
@@ -94,22 +93,40 @@ s: Votre fille est-elle atteinte du symdrome du VIH ?
 
 
 ===Question2Answer1===
-
-->DONE
+s: D'accord.
+->CheckQuestion
+->DONE  
 
 ===Question2Answer2===
-
+s: Je vois.
+->CheckQuestion
 ->DONE
 
 
 ===Question2Answer3===
-
+s:...    [{~fail = fail + 1}]
+->CheckQuestion
 ->DONE
 
 
+===CheckQuestion===
+{
+    - fail == 2: 
+        -> GameOver
+    - else:    
+        s: D'apres les resultats votre fille est bien eligible.
+        s: Voulez vous faire le traitement alternatif ?
+        m : Oui !
+        s : Tres bien, je vous recontacterais d'ici peu, Encore merci et a bientot.
+        s: {SetTransition(0)}
+        ->Chapter2
+}
+->DONE
+
 ===GameOver===
+s: J'ai l'impression que quelque erreurs se sont mis dans les questions...
 s: Reprennons depuis le debut.
-->QuestionReponse
+->Question1
 
 ===Chapter3===
 

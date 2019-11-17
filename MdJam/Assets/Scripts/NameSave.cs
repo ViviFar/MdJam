@@ -6,18 +6,18 @@ public enum Name
 {
     Benjamin,
     Charles,
+    Robert,
+    Nathan,
+    Jean,
+    Thomas,
+    Julien,
     Sophie,
     Florence,
     Alice,
     Chloe,
     Emilie,
-    Robert,
-    Nathan,
-    Thomas,
-    Julien,
     Adele,
-    Eve,
-    Jean
+    Eve
 }
 
 enum LastName

@@ -15,6 +15,10 @@ public class PaperPleaseManager : MonoBehaviour
     [SerializeField]
     protected List<string> docs = new List<string>();
     protected static PaperPleaseManager instance;
+
+    [SerializeField]
+    protected Sprite[] images;
+
     public static PaperPleaseManager Instance { get { return instance; } }
     #region singleton
     private void Awake()
@@ -97,6 +101,7 @@ public class PaperPleaseManager : MonoBehaviour
         }
         document.transform.localPosition += Vector3.forward * 20;
         doc.docName = NameSave.GetName((Name)index - 1);
+        doc.Photo.sprite = images[index-1];
         //doc.docInclusion = SelectorGenerator.GenerateCritere(4);
         doc.SetDoc();
         doc.target = Vector3.zero;

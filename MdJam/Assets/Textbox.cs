@@ -120,7 +120,7 @@ public class Textbox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0))
         {
             if (!ischoice)
             {
@@ -198,7 +198,7 @@ public class Textbox : MonoBehaviour
             }
         }
         canContinue = true;
-        timeText = 0.001f:
+        timeText = 0.001f;
 
     }
 

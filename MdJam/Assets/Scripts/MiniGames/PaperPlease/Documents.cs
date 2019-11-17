@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Documents : MonoBehaviour
 {
@@ -29,6 +30,13 @@ public class Documents : MonoBehaviour
     protected TextMeshProUGUI exclusionLabel;
 
     public string docName;
+    [SerializeField]
+    protected Image image;
+    public Image Photo 
+    {
+        get { return image; }
+        set { image = value; }
+    }
     public string docDescription;
     public string docInclusion;
     [SerializeField]
