@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
+using Cinemachine;
 
 public enum Speaker
 {
@@ -24,6 +26,7 @@ public class Textbox : MonoBehaviour
 
     [SerializeField]
     protected TextMeshProUGUI textbox;
+    protected TextMeshProUGUI name;
     protected bool canContinue = true;
     [SerializeField] 
     protected RectTransform choice;
@@ -31,9 +34,80 @@ public class Textbox : MonoBehaviour
     protected GameObject buttonChoicePrefab;
     protected bool ischoice;
 
+    [SerializeField]
+    protected Animator SceneLab1Anim;
+    [SerializeField]
+    protected Animator TransitionAnim;
+    protected float timeText = 0;
+    [SerializeField]
+    protected GameObject soignant;
+    [SerializeField]
+    protected Transform soignantPosition;
     void Awake()
     {
         _inkStory = new Story(inkAsset.text);
+        _inkStory.BindExternalFunction("EnterSoignant", EnterSoignant);
+        _inkStory.BindExternalFunction("LeaveSoignant", LeaveSoignant);
+        _inkStory.BindExternalFunction("SetFontSize", (int size) => { SetFontSize(size);});
+        _inkStory.BindExternalFunction("TextAlignment", (int size) => { SetAlignement(size);});
+        _inkStory.BindExternalFunction("NextScene", (int scene) => { NextScene(scene); });
+        _inkStory.BindExternalFunction("SetTransition", (int transition) => { SetTransition(transition); });
+        _inkStory.BindExternalFunction("CritereDisappear", CritereDisappear);
+        _inkStory.BindExternalFunction("CritereAppear", CritereAppear);
+    }
+
+    private void CritereAppear()
+    {
+        TransitionAnim.SetTrigger("CritereAppear");
+
+    }
+
+    private void CritereDisappear()
+    {
+        TransitionAnim.SetTrigger("CritereDisappear");
+    }
+
+    private void NextScene(int scene)
+    {
+        SceneLab1Anim.SetTrigger("Part" + scene);
+    }
+
+    protected string SetFontSize(int size)
+    {
+        textbox.fontSize = size;
+        return "";
+    }
+
+    protected void SetTransition(int transition)
+    {
+        if (transition == 0)
+        {
+            TransitionAnim.SetTrigger("TransitionIn");
+
+        }
+        else
+        {
+            TransitionAnim.SetTrigger("TransitionOut");
+
+        }
+    }
+
+    protected string SetAlignement(int alignement)
+    {
+        textbox.alignment = (TextAlignmentOptions)alignement;
+        return "";
+    }
+
+    protected void EnterSoignant()
+    {
+        GameObject gameObject = Instantiate(soignant, soignantPosition);
+        gameObject.transform.localPosition = Vector3.zero;
+        gameObject.transform.localPosition += transform.up* gameObject.GetComponent<Renderer>().bounds.size.y/2;
+    }
+
+    protected void LeaveSoignant()
+    {
+        SceneLab1Anim.SetTrigger("Part5");
     }
 
     // Start is called before the first frame update
@@ -50,6 +124,12 @@ public class Textbox : MonoBehaviour
             if (!ischoice)
             {
                 NextText();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            if (!canContinue)
+            {
             }
         }
     }
@@ -72,24 +152,29 @@ public class Textbox : MonoBehaviour
         if (str == "n:")
         {
             speaker = Speaker.Narrator;
+            name.text = "Narrateur";
         }
         else if (str == "c:")
         {
             speaker = Speaker.Chercheur;
+            name.text = "Paul";
         }
         else if (str == "f:")
         {
             speaker = Speaker.Fille;
+            name.text = "Emilie";
 
         }
         else if (str == "m:")
         {
             speaker = Speaker.Maman;
+            name.text = "Stephanie";
 
         }
         else if (str == "s:") 
         { 
             speaker = Speaker.Soignant;
+            name.text = "Jacqueline";
         }
 
         canContinue = false;
@@ -97,7 +182,7 @@ public class Textbox : MonoBehaviour
         for (int i = 0; i < text.Length; i++)
         {
             textbox.text += text[i];
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(timeText);
         }
         if (_inkStory.currentChoices.Count > 0)
         {
@@ -112,6 +197,8 @@ public class Textbox : MonoBehaviour
             }
         }
         canContinue = true;
+        //timeText = 0.001f;
+
     }
 
     public void GetChoice(int choice)

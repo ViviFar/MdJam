@@ -38,6 +38,5 @@ public class ChoiceButton : MonoBehaviour
     private void OnDestroy()
     {
         button.onClick.RemoveAllListeners();
-
     }
 }

@@ -3,7 +3,57 @@ guid: a020423ff6d06c2499211504c8537e35
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chaise_labo_mat
+    second: {fileID: 2100000, guid: 08f797bdf3c677849a41272c9a0b5404, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Clavier_mat
+    second: {fileID: 2100000, guid: a18887e6388e53547855ce5a20069da5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ecran_mat
+    second: {fileID: 2100000, guid: 2642fd40cec0e984db402828b74d7494, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eprouverres_mat
+    second: {fileID: 2100000, guid: f053a399bd3d0f84d966db056ba03328, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eprouvettes_mat
+    second: {fileID: 2100000, guid: dc7fa34aa6e914941acf8c28e875f049, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Laboratoire_mat
+    second: {fileID: 2100000, guid: bd616f2b6ebd7ab43b55378651b276a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Microscope_mat
+    second: {fileID: 2100000, guid: 551bd900b953b7f4fb5053d0507935c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Souris_mat
+    second: {fileID: 2100000, guid: dfaeebaacf3fb4b46a0c5f872b1d23da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stylos_mat
+    second: {fileID: 2100000, guid: 379dd749afdb06a4295fb78ad18f1888, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Table_mat
+    second: {fileID: 2100000, guid: 899cb8b1a4953ba498cb35eb1f67a16c, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -36,7 +86,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1

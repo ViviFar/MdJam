@@ -3,7 +3,42 @@ guid: d1310e0a655409c459e76b1d78557c21
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chaise_chambre_mat
+    second: {fileID: 2100000, guid: 74d160d7692510941ac690cb6567e8fb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Couloir_mat
+    second: {fileID: 2100000, guid: 9ccf1b0aef6de2d48bad706c9a13196c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor
+    second: {fileID: 2100000, guid: 3b25f688859b66c4399b8cb6266a77e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lit_mat
+    second: {fileID: 2100000, guid: d4d622e874c6c674db23596da86a438b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plante_mat
+    second: {fileID: 2100000, guid: 34accbea089cf414ea46ede5c8a8677b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plastique
+    second: {fileID: 2100000, guid: 2f4130416be50c2428a78f48ed0ed66d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: a0463538aef07374d809d4819bf398de, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

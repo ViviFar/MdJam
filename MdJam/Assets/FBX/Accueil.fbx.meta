@@ -3,7 +3,42 @@ guid: 648949bf9a8859947b7911b9751c5095
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Accueil_mat
+    second: {fileID: 2100000, guid: e622b4396b424454ebb512aaba869d15, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ecran_mat
+    second: {fileID: 2100000, guid: 73fb5759c955a034fa8777f2d2c623b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plante_mat
+    second: {fileID: 2100000, guid: 444c9dab7f9ae074f9adf6ba1a0b5b47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plastique
+    second: {fileID: 2100000, guid: f4829aa79138b1e46a9b7d48bf6add1d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stylos_mat
+    second: {fileID: 2100000, guid: 287fcd908551f1145830d5adb60ca47f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Telephone_mat
+    second: {fileID: 2100000, guid: 1430e5b9f29b8ec4999bec00cb019ff5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: 3bd660937ab409146a2858f6c98ba9f2, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -43,7 +78,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
