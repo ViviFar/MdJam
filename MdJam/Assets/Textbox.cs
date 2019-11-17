@@ -26,7 +26,8 @@ public class Textbox : MonoBehaviour
 
     [SerializeField]
     protected TextMeshProUGUI textbox;
-    protected TextMeshProUGUI name;
+    [SerializeField]
+    protected TextMeshProUGUI nameLabel;
     protected bool canContinue = true;
     [SerializeField] 
     protected RectTransform choice;
@@ -152,29 +153,29 @@ public class Textbox : MonoBehaviour
         if (str == "n:")
         {
             speaker = Speaker.Narrator;
-            name.text = "Narrateur";
+            nameLabel.text = "Narrateur";
         }
         else if (str == "c:")
         {
             speaker = Speaker.Chercheur;
-            name.text = "Paul";
+            nameLabel.text = "Paul";
         }
         else if (str == "f:")
         {
             speaker = Speaker.Fille;
-            name.text = "Emilie";
+            nameLabel.text = "Emilie";
 
         }
         else if (str == "m:")
         {
             speaker = Speaker.Maman;
-            name.text = "Stephanie";
+            nameLabel.text = "Stephanie";
 
         }
         else if (str == "s:") 
         { 
             speaker = Speaker.Soignant;
-            name.text = "Jacqueline";
+            nameLabel.text = "Jacqueline";
         }
 
         canContinue = false;
@@ -197,7 +198,7 @@ public class Textbox : MonoBehaviour
             }
         }
         canContinue = true;
-        //timeText = 0.001f;
+        timeText = 0.001f;
 
     }
 

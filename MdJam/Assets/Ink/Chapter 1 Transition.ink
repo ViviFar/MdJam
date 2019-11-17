@@ -50,13 +50,59 @@ s: Alors ? A ce que je vois le traitement standart n'as pas l'air de fonctionner
 m: Malheureusement non...
 s: Ne vous inquietez pas Madame. Il s'avere que votre fille est tres probablement eligible a un traitement alternatif.
 s: Je vais maintenant vous pauser des question pour savoir si oui on non votre fille est reellement eligible. {NextScene(7)}
+s: Certaine question vont sans doute vous semblez stupide au vu de l'age de votre fille mais elles sont necessaire.
+->Question1
+
 ->DONE
 
 ===Chapter2===
 
 ->DONE
 
+===Question1===
+s: Hormis le traitement initial est ce que votre fille a eu des medicaments ?
++   [Oui] -> Question1Answer1
++   [Non] -> Question1Answer2
++   [...] -> Question1Answer3
+
 ===QuestionReponse===
+
+->DONE
+
+===Question1Answer1===
+m: Oui bien evidemment.
+s: Tres bien
+->Question2
+
+===Question1Answer2===
+m: Non, je ne lui est donne aucun autre medicaments en dehors de ceux du traitement initial.
+s: Interressant
+->Question2
+
+
+===Question1Answer3===
+m: ...
+s: Le silence n'est pas une reponse mais soit.
+->Question2
+
+===Question2===
+s: Votre fille est-elle atteinte du symdrome du VIH ?
++ [Oui] -> Question2Answer1
++ [Non] -> Question2Answer2
++ [...] -> Question2Answer3
+-> DONE
+
+
+===Question2Answer1===
+
+->DONE
+
+===Question2Answer2===
+
+->DONE
+
+
+===Question2Answer3===
 
 ->DONE
 
