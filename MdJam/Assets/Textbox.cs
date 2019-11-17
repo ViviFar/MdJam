@@ -198,7 +198,7 @@ public class Textbox : MonoBehaviour
             }
         }
         canContinue = true;
-        timeText = 0.001f;
+        timeText = 0.001f:
 
     }
 
